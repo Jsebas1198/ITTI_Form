@@ -23,7 +23,7 @@ const Card = ({ userId, id, title, completed }: IProps) => {
         })
         .catch((err) => {
           setShowModal(false);
-          console.log('[DELETE PRODUCT ERROR]: ', err);
+          console.error('[DELETE USER ERROR]: ', err);
           toast.error('Error inesperado, intente más tarde');
         });
     }
