@@ -17,6 +17,7 @@ const CardList = ({ filter }: IProps) => {
     };
   }, []);
 
+  //Obtiene los datos de los usuarios 
   const fetchCards = async () => {
     if (hasLoaded) return; // Si los datos ya se han cargado, no hagas nada
     try {
@@ -29,6 +30,7 @@ const CardList = ({ filter }: IProps) => {
     }
   };
 
+  //Controlar el desplazamiento de la página y cargar más tarjetas al llegar al final.
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
@@ -47,6 +49,7 @@ const CardList = ({ filter }: IProps) => {
       return !card.completed;
     }
   });
+  
   return (
     <div>
       <div className="row">

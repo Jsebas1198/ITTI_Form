@@ -1,4 +1,4 @@
-import  { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import axiosInstance from '../config/axios';
 import MUser from '../models/MUser';
 import { IUser } from '../interfaces/User/IUser';
@@ -7,7 +7,6 @@ import { ERequestContentType } from '../enum/ERequestContentType';
 import { IUpdateUser } from '../interfaces/User/IUpdateUser';
 import { IHttpResponse } from '../interfaces/User/IHttpResponse';
 
-
 export default class UserService {
   /**
    * @description Obtiene los usuarios de la base de datos
@@ -15,9 +14,8 @@ export default class UserService {
    */
   public static async getUsers(): Promise<MUser[]> {
     try {
-      const { data: categoriesResponse }: AxiosResponse<any> = await axiosInstance.get(
-        '/todos'
-      );
+      const { data: categoriesResponse }: AxiosResponse<any> =
+        await axiosInstance.get('/todos');
 
       return categoriesResponse;
     } catch (error) {
@@ -32,9 +30,8 @@ export default class UserService {
    */
   public static async getUserById(userId: string): Promise<MUser> {
     try {
-      const { data: userResponse }: AxiosResponse<IUser> = await axiosInstance.get(
-        `/todos/${userId}`
-      );
+      const { data: userResponse }: AxiosResponse<IUser> =
+        await axiosInstance.get(`/todos/${userId}`);
       return new MUser(userResponse);
     } catch (error) {
       return Promise.reject(error);
@@ -48,10 +45,12 @@ export default class UserService {
    */
   public static async create(createValues: ICreateUser): Promise<MUser> {
     try {
-      const {userId, title, completed  } = createValues;
+      const { userId, title, completed } = createValues;
 
       const requestData = {
-        userId, title, completed
+        userId,
+        title,
+        completed,
       };
 
       const { data: createResponse }: AxiosResponse<IHttpResponse<MUser>> =
@@ -73,20 +72,20 @@ export default class UserService {
    * @param {string} userId ID del usuario que se va a actualizar
    * @returns {Promise<any>}
    */
-  public static async updateUser(changes: IUpdateUser, id: number): Promise<any> {
+  public static async updateUser(
+    changes: IUpdateUser,
+    id: number
+  ): Promise<any> {
     try {
-      const { userId, title, completed  } = changes;
+      const { userId, title, completed } = changes;
 
       const newData = { userId, title, completed };
-      const { data: updateResponse }: AxiosResponse<IHttpResponse<any>> = await axiosInstance.put(
-        `todos/${id}`,
-        newData,
-        {
+      const { data: updateResponse }: AxiosResponse<IHttpResponse<any>> =
+        await axiosInstance.put(`todos/${id}`, newData, {
           headers: {
             'content-type': `${ERequestContentType.JSON}; charset=UTF-8`,
           },
-        }
-      );
+        });
 
       return updateResponse.data;
     } catch (error) {

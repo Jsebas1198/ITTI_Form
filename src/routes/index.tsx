@@ -5,7 +5,7 @@ import {
   Routes as ReactRoutes,
 } from 'react-router-dom';
 
-const FormPage = React.lazy(() => import('../components/common/Form'));
+const FormWrapper = React.lazy(() => import('../components/FormWrapper'));
 const MainPage = React.lazy(() => import('../components/MainPage'));
 
 export default function Routes(): JSX.Element {
@@ -14,7 +14,7 @@ export default function Routes(): JSX.Element {
         <BrowserRouter>
           <ReactRoutes>
             <Route path="/" element={<MainPage />} />
-              <Route path="form" element={<FormPage />} />
+              <Route path="form" element={<FormWrapper />} />
           </ReactRoutes>
         </BrowserRouter>
       </React.Suspense>
