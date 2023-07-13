@@ -17,7 +17,9 @@ const CardList = ({ filter }: IProps) => {
     };
   }, []);
 
-  //Obtiene los datos de los usuarios
+  /**
+   * @description Obtiene los datos de los usuarios
+   */
   const fetchCards = async () => {
     if (hasLoaded) return; // Si los datos ya se han cargado, no hagas nada
     try {
@@ -30,7 +32,9 @@ const CardList = ({ filter }: IProps) => {
     }
   };
 
-  //Controlar el desplazamiento de la página y cargar más tarjetas al llegar al final.
+  /**
+   * @description Controlar el desplazamiento de la página y cargar más tarjetas al llegar al final.
+   */
   const handleScroll = () => {
     if (
       window.innerHeight + document.documentElement.scrollTop ===
@@ -55,12 +59,7 @@ const CardList = ({ filter }: IProps) => {
       <div className="row">
         {filteredCards.map((card, index) => (
           <div className="col-sm-6 col-md-4 col-lg-3 mb-2" key={index}>
-            <Card
-              userId={card.userId}
-              id={card.id}
-              title={card.title}
-              completed={card.completed}
-            />
+            <Card userId={card.userId} id={card.id} title={card.title} completed={card.completed} />
           </div>
         ))}
       </div>

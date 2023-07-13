@@ -1,5 +1,9 @@
+import { IconType } from 'react-icons';
+
 export interface IProps {
-  type: string;
+  type: 'submit' | 'button';
   label: string;
   handleClick?: () => void;
+  icon?: IconType;
+  className?: string;
 }

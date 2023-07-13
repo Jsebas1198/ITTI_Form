@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindow } from '../../../hooks/useWindow';
+import CustomButton from '../CustomButton';
 import { IProps } from './IProps';
 
 const CustomForm = ({
@@ -25,9 +26,20 @@ const CustomForm = ({
   }, [user]);
   return (
     <form onSubmit={handleSubmit(user ? editUser : createUser)} className="p-5">
+      <h1
+        style={{
+          color: '#232323',
+          textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+          fontSize: '36px',
+          fontWeight: 'bold',
+        }}
+      >
+        {user ? 'EDITAR USUARIO' : 'CREAR USUARIO'}
+      </h1>
+
       <div className="mb-3">
         <label htmlFor="userId" className="form-label">
-          ID de usuario
+          ID del usuario
         </label>
         <input
           type="number"
@@ -67,16 +79,17 @@ const CustomForm = ({
 
       <div className="d-flex flex-column flex-md-row justify-content-md-between">
         <div className="-mx-1">
-          <button type="submit" className="btn btn-primary px-4 mx-1">
-            {user ? 'Editar' : 'Crear'}
-          </button>
-          <button
-            type="button"
+          <CustomButton
+            type={'submit'}
+            className={'btn btn-primary px-4 mx-1'}
+            label={user ? 'Editar' : 'Crear'}
+          />
+          <CustomButton
+            type={'button'}
             className={`btn btn-secondary px-4 mx-1 ${isMobile ? 'mt-2' : ''}`}
-            onClick={() => navigate('/')}
-          >
-            Volver
-          </button>
+            label={'Regresar'}
+            handleClick={() => navigate(-1)}
+          />
         </div>
       </div>
     </form>

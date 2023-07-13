@@ -5,9 +5,13 @@ import CardList from '../../components/CardsList';
 const MainPage = () => {
   const [filter, setFilter] = useState('all');
 
+  /**
+   * @description Controla la opción de filtrado por el select
+   */
   const handleFilterChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setFilter(event.target.value);
   };
+
   return (
     <>
       <header>
