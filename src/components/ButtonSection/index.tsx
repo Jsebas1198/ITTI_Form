@@ -1,14 +1,18 @@
 import CustomButton from '../common/CustomButton';
-
+import { useNavigate  } from 'react-router-dom';
 const ButtonSection = () => {
+  const navigate = useNavigate();
+
+  const handleCreateUser = () => {
+    navigate('/form');
+  };
+
   return (
     <div className="d-flex flex-wrap justify-content-center bg-danger">
       <CustomButton
         type={'button'}
         label={'Crear usuario'}
-        handleClick={() => {
-          console.log('Botón 1');
-        }}
+        handleClick={handleCreateUser}
       />
       <CustomButton
         type={'button'}
