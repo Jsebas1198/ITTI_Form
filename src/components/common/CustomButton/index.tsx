@@ -1,7 +1,7 @@
 import { Button } from 'react-bootstrap'
-import { IButton } from '../../../interfaces/Button/IButton'
+import { IProps } from './IProps'
 
-const CustomButton = ({ type, label, handleClick}:IButton) => {
+const CustomButton = ({ type, label, handleClick}:IProps) => {
   return (
     <Button  
       className="btn btn-primary m-2" 

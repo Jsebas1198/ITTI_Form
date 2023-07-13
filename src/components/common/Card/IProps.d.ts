@@ -1,4 +1,4 @@
-export interface ICard{
+export interface IProps{
     userId: number;
     id: number;
     title: string;
