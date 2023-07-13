@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import ButtonSection from '../ButtonSection';
-import CardList from '../CardsList';
+import ButtonSection from '../../components/ButtonSection';
+import CardList from '../../components/CardsList';
 
 const MainPage = () => {
   const [filter, setFilter] = useState('all');

@@ -1,4 +1,3 @@
 export enum ERequestContentType {
-    JSON = 'application/json',
-  }
-  
+  JSON = 'application/json',
+}

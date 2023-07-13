@@ -1,3 +1,3 @@
-export interface IProps{
-filter:string;   
+export interface IProps {
+  filter: string;
 }

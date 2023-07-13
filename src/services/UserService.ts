@@ -74,7 +74,7 @@ export default class UserService {
    */
   public static async updateUser(
     changes: IUpdateUser,
-    id: number
+    id: string
   ): Promise<any> {
     try {
       const { userId, title, completed } = changes;

@@ -1,19 +1,30 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useWindow } from '../../../hooks/useWindow';
 import { IProps } from './IProps';
 
 const CustomForm = ({
   createUser,
+  editUser,
   handleSubmit,
   register,
   errors,
   validateTitle,
+  setValue,
+  user,
 }: IProps) => {
   const navigate = useNavigate();
   const { isMobile } = useWindow();
 
+  useEffect(() => {
+    if (user) {
+      setValue('userId', user.userId);
+      setValue('title', user.title);
+      setValue('completed', user.completed);
+    }
+  }, [user]);
   return (
-    <form onSubmit={handleSubmit(createUser)} className="p-5">
+    <form onSubmit={handleSubmit(user ? editUser : createUser)} className="p-5">
       <div className="mb-3">
         <label htmlFor="userId" className="form-label">
           ID de usuario
@@ -23,9 +34,7 @@ const CustomForm = ({
           className={`form-control ${errors.userId ? 'is-invalid' : ''}`}
           {...register('userId', { required: true })}
         />
-        {errors.userId && (
-          <div className="invalid-feedback">ID de usuario es requerido</div>
-        )}
+        {errors.userId && <div className="invalid-feedback">ID de usuario es requerido</div>}
       </div>
 
       <div className="mb-3">
@@ -41,9 +50,7 @@ const CustomForm = ({
           })}
         />
         {errors.title && (
-          <div className="invalid-feedback">
-            {errors.title.message || 'Titulo es requerido'}
-          </div>
+          <div className="invalid-feedback">{errors.title.message || 'Titulo es requerido'}</div>
         )}
       </div>
       <div className="form-check mb-3">
@@ -55,15 +62,13 @@ const CustomForm = ({
         <label className="form-check-label" htmlFor="completed">
           Completed
         </label>
-        {errors.completed && (
-          <div className="invalid-feedback">Valores invalidos</div>
-        )}
+        {errors.completed && <div className="invalid-feedback">Valores invalidos</div>}
       </div>
 
       <div className="d-flex flex-column flex-md-row justify-content-md-between">
         <div className="-mx-1">
           <button type="submit" className="btn btn-primary px-4 mx-1">
-            Crear
+            {user ? 'Editar' : 'Crear'}
           </button>
           <button
             type="button"

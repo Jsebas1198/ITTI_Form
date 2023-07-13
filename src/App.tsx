@@ -1,13 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import "./App.css";
+import './App.css';
 import Routes from './routes';
 
 function App() {
-  return (  
-    <Routes />
-  );
-
+  return <Routes />;
 }
 
 export default App;

@@ -1,10 +1,10 @@
 import CustomButton from '../common/CustomButton';
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const ButtonSection = () => {
   const navigate = useNavigate();
 
   const handleCreateUser = () => {
-    navigate('/form');
+    navigate('/form/crear');
   };
 
   return (

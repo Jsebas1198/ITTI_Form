@@ -1,6 +1,5 @@
 export interface ICreateUser {
-    userId: number;
-    title: string;
-    completed: boolean;
-  }
-  
+  userId: number;
+  title: string;
+  completed: boolean;
+}

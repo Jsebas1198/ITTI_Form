@@ -1,6 +1,6 @@
-export interface IProps{
-    userId: number;
-    id: number;
-    title: string;
-    completed: boolean;     
+export interface IProps {
+  userId: number;
+  id: number;
+  title: string;
+  completed: boolean;
 }
